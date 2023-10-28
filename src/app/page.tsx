@@ -1,17 +1,27 @@
-'use client'
+import React from "react";
+import { Children } from "react";
+import ReactDOM from "react-dom";
 
-import { Grid } from '@giphy/react-components'
-import { GiphyFetch } from '@giphy/js-fetch-api'
+async function getData() {
+  const res = await fetch(
+    "https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=jewelry&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips"
+  );
 
-export default function Home() {
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-  const gf = new GiphyFetch('MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl')
+  return res.json();
+}
 
-  const fetchGifs = (offset: number) => gf.trending({ offset, limit: 10 })
+export default async function Page() {
+  const data = await getData();
 
   return (
-    <main className='flex justify-center my-2'>
-      <Grid width={1800} columns={6} fetchGifs={fetchGifs} />
+    <main>
+      {Children.map(data, (child) => (
+        <div className="Row">{child}</div>
+      ))}
     </main>
-  )
+  );
 }
