@@ -21,16 +21,16 @@ export default function SearchGifs() {
   const handleChange = e => setSearch(e.target.value)
 
   return (
-      <div className='m-5'>
-        <input
-          className='m-2'
-          type="text"
-          placeholder='Search here'
-          value={search}
-          onChange={handleChange}
-        />
-        <button type="submit" onChange={handleChange} className='bg-slate-700 text-white py-2 px-3 rounded'>Search</button>
-        <QueryGifs searchTerm={search} />
+    <div className='m-5'>
+      <input
+        className='m-2'
+        type="text"
+        placeholder='Search here'
+        value={search}
+      />
+      <button type="submit" className='bg-slate-700 text-white py-2 px-3 rounded'>Search</button>
+      
+      <QueryGifs searchTerm={search} />
     </div>
   )
   }
