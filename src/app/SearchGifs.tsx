@@ -2,27 +2,36 @@
 
 import React from 'react'
 import { useState } from 'react';
+import Image from 'next/image';
 
-export default async function SearchGifs() {
-  const [search, setSearch] = useState('Enter a search term');
-  
-  const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${search}&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips`)
+async function QueryGifs(props) {
+  let res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${props.searchTerm}&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips`)
 
   const { data: gifs } = await res.json()
-  const listItems = gifs.map(gif => <li key={gif.id}>{gif.title}</li>)
+  const listGifs = gifs.map(gif => <li key={gif.id}>{gif.title} <Image src={gif.url} width={200} height={200} alt={gif.title} /></li>)
 
   return (
-    <>
-      <form>
-        <input
-          type="text"
-          value={search}
-          onChange={setSearch}
-        />
-        <button type="submit">Search</button>
-      </form>
-      <ul>{listItems}</ul>
-    </>
-    
+    <ul className='m-5'>{listGifs}</ul>
   )
   }
+
+export default function SearchGifs() {
+  const [search, setSearch] = useState('Search here');
+  
+  const handleChange = e => setSearch(e.target.value)
+
+  return (
+      <div className='m-5'>
+        <input
+          className='m-2'
+          type="text"
+          placeholder='Search here'
+          value={search}
+          onChange={handleChange}
+        />
+        <button type="submit" onChange={handleChange} className='bg-slate-700 text-white py-2 px-3 rounded'>Search</button>
+        <QueryGifs searchTerm={search} />
+    </div>
+  )
+  }
+

@@ -5,3 +5,7 @@
 :root {
   box-sizing: border-box;
 }
+
+li {
+  display: inline-flex;
+}
