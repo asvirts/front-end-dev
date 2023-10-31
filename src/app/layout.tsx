@@ -1,12 +1,11 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from "next"
+import "./globals.css"
+import SearchGifs from "./SearchGifs"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: 'GIPHY Search',
-  description: 'Search for your favorite GIF',
+  title: "GIPHY Search",
+  description: "Search for your next favorite GIF",
 }
 
 export default function RootLayout({
@@ -16,7 +15,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="bg-slate-800">
+        <div className="container mx-auto text-center my-2">
+          <Link href="/" className="text-white">
+            Home
+          </Link>
+          <SearchGifs />
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
