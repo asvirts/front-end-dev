@@ -1,48 +1,26 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { useState, useRef } from 'react';
-import Image from 'next/image';
-
-async function QueryGifs(props: any) {
-
-  let res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${props.searchTerm}&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips`)
-
-  const { data: gifs } = await res.json()
-  const listGifs = gifs.map(gif => <li key={gif.id}>{gif.title} <Image src={gif.url} width={200} height={200} alt={gif.title} /></li>)
-
-  return (
-    <ul className='m-5'>{listGifs}</ul>
-  )
-  }
+import React, { useState } from "react";
+import FetchGifs from "./FetchGifs";
 
 export default function SearchGifs() {
-  const [search, setSearch] = useState("Search here");
-  const inputRef = useRef()
+  const [input, setInput] = useState("Search here");
 
-  function onSubmit(e: any) {
-    e.preventDefault()
-
-    const value = inputRef.current.value
-
-    if (value === "") return
-    setSearch(value)
-    inputRef.current.value = ""
-  }
+  const handleChange = (value: string) => {
+    setInput(value);
+    FetchGifs(value);
+  };
 
   return (
-    <div className='m-5'>
-      <form onSubmit={onSubmit}>
-        <input
-          ref={inputRef}
-          className='m-2'
-          type="search"
-          value={search}
-        />
-        <button type="submit" className='bg-slate-700 text-white py-2 px-3 rounded'>Search</button>
-      </form>
-      <QueryGifs searchTerm={search} />
+    <div className="flex flex-col justify-center">
+      <input
+        type="text"
+        name="name"
+        onChange={(e) => handleChange(e.target.value)}
+        value={input}
+        className="m-5 block w-1/2 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      />
+      <FetchGifs term={input} />
     </div>
-  )
-  }
-
+  );
+}
