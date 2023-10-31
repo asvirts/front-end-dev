@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation"
 
-export default function page() {
+export default function Page() {
   const search = useSearchParams()
   const searchQuery = search?.get("q")
   console.log(searchQuery)
