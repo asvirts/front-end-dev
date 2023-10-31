@@ -9,27 +9,18 @@ export default function page() {
 
   async function FetchGifs() {
     let res = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${searchQuery}&limit=8&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
+      `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${searchQuery}&limit=9&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
     )
 
     const { data: gifs } = await res.json()
 
     let listGifs = gifs.map((gif: any) => (
-      <li
-        key={gif.id}
-        className="text-white flex flex-col w-1/4 m-5 text-center"
-      >
-        {gif.title}
+      <li key={gif.id} className="text-white w-1/4 m-5 text-center">
         <iframe
           src={gif.embed_url}
-          width="480"
-          height="270"
-          frameBorder="0"
-          className="giphy-embed"
+          className="inline-block aspect-square giphy-embed"
           allowFullScreen
         />
-        {gif.embed_url}
-        {gif.url}
       </li>
     ))
 
