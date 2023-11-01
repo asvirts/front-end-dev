@@ -9,7 +9,7 @@ export default function Page() {
 
   async function FetchGifs() {
     let res = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${searchQuery}&limit=9&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
+      `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${searchQuery}&total_count=200&limit=9&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
     )
 
     const { data: gifs } = await res.json()
