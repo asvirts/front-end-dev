@@ -7,6 +7,8 @@ export default function SearchGifs() {
   const [input, setInput] = useState("")
   const router = useRouter()
 
+  console.log(router)
+
   function onSearch(e: React.FormEvent) {
     e.preventDefault()
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import SearchGifs from "./SearchGifs"
+import SearchGifs from "./components/SearchGifs"
 import Link from "next/link"
 
 export const metadata: Metadata = {
