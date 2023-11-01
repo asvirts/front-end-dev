@@ -6,7 +6,6 @@ import { Gif } from "../../../types"
 export default function Page() {
   const search = useSearchParams()
   const searchQuery = search?.get("q")
-  console.log(searchQuery)
 
   async function FetchGifs() {
     let res = await fetch(

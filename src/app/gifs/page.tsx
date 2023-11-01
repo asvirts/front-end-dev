@@ -1,8 +1,13 @@
 "use client"
 
+import { useSearchParams } from "next/navigation"
 import { Gif } from "../../../types"
 
 export default async function Page() {
+  const search = useSearchParams()
+  const searchQuery = search?.get("q")
+  console.log(searchQuery)
+
   async function FetchGifs() {
     let res = await fetch(
       `https://api.giphy.com/v1/gifs/trending?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&limit=3&offset=0&rating=g&bundle=messaging_non_clips`
@@ -32,7 +37,7 @@ export default async function Page() {
   return (
     <>
       <h1 className="text-white font-bold text-2xl">
-        This page renders as .gif instead of .mp4
+        This route renders as .gif instead of .mp4
       </h1>
       <p className="text-white">
         Right-click any image and select "Copy image" then paste the image
