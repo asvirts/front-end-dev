@@ -1,3 +1,5 @@
+'use client'
+
 import { Gif } from "../../types"
 
 export default async function Page() {
@@ -8,9 +10,14 @@ export default async function Page() {
 
     const { data: gifs } = await res.json()
 
+    function handleClick(copy: any) {
+      navigator.clipboard.writeText(copy);
+      alert("GIF copied to clipboard!")
+    };
+
     let listGifs = gifs.map((gif: Gif) => (
       <div key={gif.id} className="text-white w-full m-5 text-center">
-        <video src={gif.images.original.mp4} autoPlay loop></video>
+        <video src={gif.images.original.mp4} autoPlay loop onClick={() => handleClick(gif.images.original.url)}></video>
       </div>
     ))
 
