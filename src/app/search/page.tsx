@@ -16,7 +16,7 @@ export default function Page() {
     const { data: gifs } = await res.json()
 
     let listGifs = gifs.map((gif: Gif) => (
-      <div key={gif.id} className="text-white w-full m-5 text-center">
+      <div key={gif.id} className="text-white w-full text-center">
         <video src={gif.images.original.mp4} autoPlay loop></video>
       </div>
     ))
