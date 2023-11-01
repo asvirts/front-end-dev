@@ -34,6 +34,10 @@ export default async function Page() {
       <h1 className="text-white font-bold text-2xl">
         This page renders as .gif instead of .mp4
       </h1>
+      <p className="text-white">
+        Right-click any image and select "Copy image" then paste the image
+        directly into Teams, Slack, or wherever you are trying to share
+      </p>
       <FetchGifs />
     </>
   )
