@@ -1,3 +1,5 @@
+import { Gif } from "../../types"
+
 export default async function Page() {
   async function FetchGifs() {
     let res = await fetch(
@@ -6,18 +8,14 @@ export default async function Page() {
 
     const { data: gifs } = await res.json()
 
-    let listGifs = gifs.map((gif: any) => (
-      <li key={gif.id} className="text-white m-5 text-center">
-        <iframe
-          src={gif.embed_url}
-          className="aspect-square giphy-embed inline-grid"
-          allowFullScreen
-        />
-      </li>
+    let listGifs = gifs.map((gif: Gif), index: any => (
+      <div key={gif.data[index].id} className="text-white w-1/4 m-5 text-center">
+        <video src={gif.data[index].images.original.mp4}></video>
+      </div>
     ))
 
     return (
-      <ul className="m-5 grid grid-rows-3 grid-flow-col gap-4">{listGifs}</ul>
+      <div className="m-5 grid grid-rows-3 grid-flow-col gap-4">{listGifs}</div>
     )
   }
 
