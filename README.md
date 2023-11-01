@@ -1,1 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Gif or Jif?](https://media.giphy.com/media/1ET7hRlCcZLuE/giphy.gif))
+# Giphy Search
+Find your next favorite Gif... the cool way
