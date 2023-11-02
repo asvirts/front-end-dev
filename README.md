@@ -22,6 +22,7 @@ Find your next favorite GIF... the cool way
 - React components are used for things like the back and next buttons, search bar, and GIF fetching
 - Typescript is used and the Gif type is defined in the types.d.ts file
 - Tailwind is used for styling along with some CSS modules for a couple of manual stylings
+- Some vanilla JS is used for things like the alert when a GIF is copied
 - Vercel handles the CI/CD for the app when changes are committed to the repo
 
 # View live site: [https://front-end-dev-alpha.vercel.app/](https://front-end-dev-alpha.vercel.app/)
