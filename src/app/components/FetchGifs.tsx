@@ -2,7 +2,7 @@ import { Gif } from "../../../types"
 
 export default async function FetchGifs(props: any) {
   let res = await fetch(
-    `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${props.query}&limit=9&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
+    `https://api.giphy.com/v1/gifs/search?api_key=MENNrEjZGJ5LyNYOw35WZX0LkglQNUSl&q=${props.query}&limit=9&offset=${props.page}&rating=g&lang=en&bundle=messaging_non_clips`
   )
 
   const { data: gifs } = await res.json()

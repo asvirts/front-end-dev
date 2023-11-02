@@ -14,7 +14,7 @@ export default function SearchGifs() {
 
     const encodedInput = encodeURI(input)
 
-    router.push(`/search?q=${encodedInput}`)
+    router.push(`/search?q=${encodedInput}&p=0`)
   }
 
   return (

@@ -6,6 +6,6 @@
   box-sizing: border-box;
 }
 
-li {
-  display: inline-flex;
+#back-btn {
+  display: none;
 }
