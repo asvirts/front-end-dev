@@ -24,6 +24,7 @@ export default async function Page() {
         <img
           src={gif.images.original.url}
           onClick={() => handleClick(gif.images.original.url)}
+          className="rounded-md w-full hover:ring-2 ring-blue-500 transition-all"
         />
       </div>
     ))
@@ -39,7 +40,7 @@ export default async function Page() {
         This route renders as .gif instead of .mp4
       </h1>
       <p className="text-white">
-        Right-click any image and select "Copy image" then paste the image
+        Right-click any image and select &quotCopy image&quot then paste the image
         directly into Teams, Slack, or wherever you are trying to share
       </p>
       <FetchGifs />

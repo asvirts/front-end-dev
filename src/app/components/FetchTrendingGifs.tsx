@@ -19,6 +19,7 @@ export default async function FetchTrendingGifs() {
         autoPlay
         loop
         onClick={() => handleClick(gif.images.original.url)}
+        className="rounded-md w-full hover:ring-2 ring-blue-500 transition-all"
       ></video>
     </div>
   ))
