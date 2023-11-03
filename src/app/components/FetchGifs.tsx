@@ -13,17 +13,18 @@ export default async function FetchGifs(props: any) {
   }
 
   let listGifs = gifs.map((gif: Gif) => (
-    <div key={gif.id} className="text-white w-full text-center">
+    <div key={gif.id} className="text-white text-center mb-4">
       <video
         src={gif.images.original.mp4}
         autoPlay
         loop
         onClick={() => handleClick(gif.images.original.url)}
+        className="rounded-md w-full hover:ring-2 ring-blue-500 transition-all"
       ></video>
     </div>
   ))
 
   return (
-    <div className="m-5 grid grid-rows-3 grid-flow-col gap-4">{listGifs}</div>
+    <div className="w-full columns-1 md:columns-3 justify-between">{listGifs}</div>
   )
 }
