@@ -1,3 +1,4 @@
+import handleClick from "@/lib/handleClick"
 import { Gif } from "../../../types"
 
 export default async function FetchTrendingGifs() {
@@ -6,11 +7,6 @@ export default async function FetchTrendingGifs() {
   )
 
   const { data: gifs } = await res.json()
-
-  function handleClick(copy: any) {
-    navigator.clipboard.writeText(copy)
-    alert("GIF url copied to clipboard!")
-  }
 
   let listGifs = gifs.map((gif: Gif) => (
     <div key={gif.id} className="text-white w-full text-center">

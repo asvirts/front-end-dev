@@ -1,3 +1,4 @@
+import handleClick from "@/lib/handleClick"
 import { Gif } from "../../../types"
 
 export default async function FetchGifs(props: any) {
@@ -6,11 +7,6 @@ export default async function FetchGifs(props: any) {
   )
 
   const { data: gifs } = await res.json()
-
-  function handleClick(copy: any) {
-    navigator.clipboard.writeText(copy)
-    alert("GIF url copied to clipboard!")
-  }
 
   let listGifs = gifs.map((gif: Gif) => (
     <div key={gif.id} className="text-white text-center mb-4">
@@ -25,6 +21,8 @@ export default async function FetchGifs(props: any) {
   ))
 
   return (
-    <div className="w-full columns-1 md:columns-3 justify-between">{listGifs}</div>
+    <div className="w-full columns-1 md:columns-3 justify-between">
+      {listGifs}
+    </div>
   )
 }
