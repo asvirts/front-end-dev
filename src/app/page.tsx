@@ -1,5 +1,3 @@
-"use client"
-
 import FetchTrendingGifs from "./components/FetchTrendingGifs"
 
 export default async function Page() {

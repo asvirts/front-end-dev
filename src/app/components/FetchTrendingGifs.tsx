@@ -1,5 +1,5 @@
-import handleClick from "@/lib/handleClick"
 import { Gif } from "../../../types"
+import Video from "@/app/components/video"
 
 export default async function FetchTrendingGifs() {
   let res = await fetch(
@@ -10,13 +10,10 @@ export default async function FetchTrendingGifs() {
 
   let listGifs = gifs.map((gif: Gif) => (
     <div key={gif.id} className="text-white w-full text-center">
-      <video
-        src={gif.images.original.mp4}
-        autoPlay
-        loop
-        onClick={() => handleClick(gif.images.original.url)}
-        className="rounded-md w-full hover:ring-2 ring-blue-500 transition-all"
-      ></video>
+      <Video
+        originalmp4={gif.images.original.mp4}
+        originalurl={gif.images.original.url}
+      />
     </div>
   ))
 
